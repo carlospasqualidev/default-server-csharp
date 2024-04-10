@@ -1,10 +1,8 @@
 
 using EduzcaServer.Data;
-using EduzcaServer.DataContext;
-using EduzcaServer.Repositories;
-using EduzcaServer.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using EduzcaServer.Controllers;
+using EduzcaServer.Repositories;
+using EduzcaServer.Services.User;
 
 namespace EduzcaServer
 {
@@ -28,7 +26,13 @@ namespace EduzcaServer
             #endregion
 
             #region INJECTION DEPENDENCY
+
+            #region USER
             builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IUserService, UserService>();
+            #endregion
+
+
             #endregion
 
 

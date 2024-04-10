@@ -9,11 +9,11 @@ namespace EduzcaServer.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            #region TABLES MAPPING
+            #region TABLE MAPPING
             modelBuilder.ApplyConfiguration(new UserMap());
             #endregion
 
-            modelBuilder.HasDefaultSchema("public");
+            modelBuilder.HasDefaultSchema("public"); // schema configuration
             base.OnModelCreating(modelBuilder);
         }
     }
