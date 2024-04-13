@@ -3,6 +3,9 @@ using EduzcaServer.Data;
 using Microsoft.EntityFrameworkCore;
 using EduzcaServer.Repositories;
 using EduzcaServer.Services.User;
+using EduzcaServer.Services.Course;
+
+
 
 namespace EduzcaServer
 {
@@ -32,7 +35,11 @@ namespace EduzcaServer
             builder.Services.AddScoped<IUserService, UserService>();
             #endregion
 
-
+            #region COURSE
+            builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+            builder.Services.AddScoped<ICourseService, CourseService>();
+            #endregion
+           
             #endregion
 
 

@@ -8,10 +8,10 @@ namespace EduzcaServer.DataContext.Maps
     {
         public void Configure(EntityTypeBuilder<UserEntity> builder)
         {
-            builder.HasKey(x => x.Id);
-            builder.Property(x => x.Name).IsRequired();
-            builder.Property(x => x.Email).IsRequired();
-            builder.Property(x => x.Password).IsRequired();   
+            builder.HasKey(user => user.Id);
+            builder.Property(user => user.Name).IsRequired();
+            builder.Property(user => user.Email).IsRequired();
+            builder.Property(user => user.Password).IsRequired();   
         }
     }
 }
