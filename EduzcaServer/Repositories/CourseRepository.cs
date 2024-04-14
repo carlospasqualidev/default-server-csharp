@@ -29,7 +29,7 @@ namespace EduzcaServer.Repositories
         #endregion
 
         #region FIND
-        public async Task<List<CourseEntity>> FindAll() => await _dbContext.Courses.ToListAsync();
+        public async Task<List<CourseEntity>> FindAll() => await _dbContext.Courses.Include(user=> user.Owner).ToListAsync();
 
         public async Task<CourseEntity> FindOne(int id)
         {

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using EduzcaServer.Repositories;
 using EduzcaServer.Services.User;
 using EduzcaServer.Services.Course;
+using EduzcaServer.Services.Auth;
 
 
 
@@ -29,6 +30,10 @@ namespace EduzcaServer
             #endregion
 
             #region INJECTION DEPENDENCY
+
+            #region COURSE
+            builder.Services.AddScoped<IAuthService, AuthService>();
+            #endregion
 
             #region USER
             builder.Services.AddScoped<IUserRepository, UserRepository>();

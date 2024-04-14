@@ -11,16 +11,6 @@ namespace EduzcaServer.Controllers
     {
         private readonly IUserService _userService = userService;
 
-        #region CREATE
-        [HttpPost]
-        public async Task<ActionResult<UserEntity>> Create(CreateUserDTO user)
-        {
-          UserEntity userData = await _userService.Create(user);
-            
-          return Ok(userData);
-        }
-        #endregion
-
         #region UPDATE
         [HttpPut]
         public async Task<ActionResult<UserEntity>> Update(UpdateUserDTO user)

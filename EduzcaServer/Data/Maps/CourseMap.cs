@@ -9,11 +9,17 @@ namespace EduzcaServer.DataContext.Maps
         public void Configure(EntityTypeBuilder<CourseEntity> builder)
         {
             builder.HasKey(course => course.Id);
+            
             builder.Property(course => course.Name).IsRequired();
             builder.Property(course => course.TumbnailUrl);
             builder.Property(course => course.IsPublished).IsRequired();
             builder.Property(course => course.UpdatedAt).IsRequired();
             builder.Property(course => course.CreatedAt).IsRequired();
+            builder.HasOne(course => course.Owner)
+            .WithMany(owner => owner.Courses)
+            .HasForeignKey(course => course.OwnerId);
         }
     }
 }
+
+

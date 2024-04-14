@@ -11,7 +11,13 @@ namespace EduzcaServer.DataContext.Maps
             builder.HasKey(user => user.Id);
             builder.Property(user => user.Name).IsRequired();
             builder.Property(user => user.Email).IsRequired();
-            builder.Property(user => user.Password).IsRequired();   
+            builder.Property(user => user.Password).IsRequired();
+            builder.HasMany(user => user.Courses)
+                   .WithOne(course=> course.Owner) 
+                   .HasForeignKey(course => course.OwnerId); 
+       
+        
+        
         }
     }
 }

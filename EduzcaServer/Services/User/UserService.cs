@@ -8,28 +8,12 @@ namespace EduzcaServer.Services.User
     {
         private readonly IUserRepository _userRepository = userRepository;
 
-        #region CREATE
-        public async Task<UserEntity> Create(CreateUserDTO user)
-        {
-            UserEntity userData = new()
-            {
-                Name = user.Name,
-                Email = user.Email,
-                Password = user.Password
-            };
-
-             await _userRepository.Create(userData);
-
-            return userData;
-        }
-        #endregion
-
         #region UPDATE
         public async Task<UserEntity> Update(UpdateUserDTO user)
         {
             UserEntity userData = await _userRepository.FindOne(user.Id);
             userData.Name = user.Name;
-            userData.Email = user.Email;
+            userData.Email = user.Email.ToLower();
             userData.Password = user.Password;
 
             await _userRepository.Update(userData);
@@ -65,7 +49,6 @@ namespace EduzcaServer.Services.User
     #region INTERFACE
     public interface IUserService
     {
-        public Task<UserEntity> Create(CreateUserDTO user);
         public Task<UserEntity> Update(UpdateUserDTO user);
         public Task<List<UserEntity>> FindAll();
         public Task<UserEntity> FindOne(int id);

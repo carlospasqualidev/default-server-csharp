@@ -4,17 +4,22 @@ using EduzcaServer.Services.Course.DTO;
 
 namespace EduzcaServer.Services.Course
 {
-    public class CourseService(ICourseRepository courseRepository): ICourseService
+    public class CourseService(ICourseRepository courseRepository, IUserRepository userRepository): ICourseService
     {
         private readonly ICourseRepository _courseRepository = courseRepository;
+        private readonly IUserRepository _userRepository = userRepository;
 
         #region CREATE
         public async Task<CourseEntity> Create(CreateCourseDTO course)
         {
+            await _userRepository.FindOne(course.OwnerId);
+
             CourseEntity courseData = new()
             {
                Name = course.Name,
                TumbnailUrl = course.TumbnailUrl,
+               OwnerId = course.OwnerId
+               
             };
 
              await _courseRepository.Create(courseData);
@@ -40,7 +45,7 @@ namespace EduzcaServer.Services.Course
         #region FIND
         public async Task<List<CourseEntity>> FindAll()
         {
-            List<CourseEntity> courses = await _courseRepository.FindAll();
+            List<CourseEntity> courses = await _courseRepository.FindAll() ;
 
             return courses;
         }

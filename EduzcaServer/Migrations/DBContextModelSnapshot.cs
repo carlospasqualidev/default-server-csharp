@@ -41,6 +41,9 @@ namespace EduzcaServer.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("OwnerId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("TumbnailUrl")
                         .HasColumnType("text");
 
@@ -48,6 +51,8 @@ namespace EduzcaServer.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("OwnerId");
 
                     b.ToTable("Courses", "public");
                 });
@@ -81,6 +86,22 @@ namespace EduzcaServer.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users", "public");
+                });
+
+            modelBuilder.Entity("EduzcaServer.Models.CourseEntity", b =>
+                {
+                    b.HasOne("EduzcaServer.Models.UserEntity", "Owner")
+                        .WithMany("Courses")
+                        .HasForeignKey("OwnerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Owner");
+                });
+
+            modelBuilder.Entity("EduzcaServer.Models.UserEntity", b =>
+                {
+                    b.Navigation("Courses");
                 });
 #pragma warning restore 612, 618
         }
