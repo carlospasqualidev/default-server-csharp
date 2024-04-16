@@ -42,7 +42,8 @@ namespace EduzcaServer.Repositories
 
         public async Task<UserEntity> FindOne(int id)
         {
-            UserEntity? dbUser = await _dbContext.Users.Include(course=> course.Courses).FirstOrDefaultAsync(user => user.Id == id);
+           // UserEntity? dbUser = await _dbContext.Users.Include(course=> course.Courses).FirstOrDefaultAsync(user => user.Id == id);
+            UserEntity? dbUser = await _dbContext.Users.FirstOrDefaultAsync(user => user.Id == id);
 
             return dbUser ?? throw new Exception("Usuário não encontrado na base de dados.");
         }

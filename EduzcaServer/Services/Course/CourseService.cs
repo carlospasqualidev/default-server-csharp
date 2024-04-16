@@ -18,8 +18,8 @@ namespace EduzcaServer.Services.Course
             {
                Name = course.Name,
                TumbnailUrl = course.TumbnailUrl,
-               OwnerId = course.OwnerId
-               
+               OwnerId = course.OwnerId,
+               Description = course.Description,
             };
 
              await _courseRepository.Create(courseData);
@@ -35,6 +35,8 @@ namespace EduzcaServer.Services.Course
             courseData.Name = course.Name;
             courseData.TumbnailUrl = course.TumbnailUrl;
             courseData.IsPublished = course.IsPublished;
+            courseData.Description = course.Description;
+
 
             await _courseRepository.Update(courseData);
 
