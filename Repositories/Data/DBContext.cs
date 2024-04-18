@@ -1,7 +1,6 @@
 ﻿using EduzcaServer.Data.Maps;
 using EduzcaServer.DataContext.Maps;
-using EduzcaServer.Entities;
-using EduzcaServer.Models;
+using Entities;
 using Microsoft.EntityFrameworkCore;
 namespace EduzcaServer.Data
 

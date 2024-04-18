@@ -1,10 +1,10 @@
-﻿using EduzcaServer.Models;
-using EduzcaServer.Repositories;
-using EduzcaServer.Services.User.DTO;
+﻿using Entities;
+using Repositories;
+using Services.User.DTO;
 
-namespace EduzcaServer.Services.User
+namespace Services.User
 {
-    public class UserService(IUserRepository userRepository): IUserService
+    public class UserService(IUserRepository userRepository) : IUserService
     {
         private readonly IUserRepository _userRepository = userRepository;
 

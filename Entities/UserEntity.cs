@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace EduzcaServer.Models
+namespace Entities
 {
     public class UserEntity
     {

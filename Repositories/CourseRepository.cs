@@ -1,8 +1,8 @@
 ﻿using EduzcaServer.Data;
-using EduzcaServer.Models;
+using Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace EduzcaServer.Repositories
+namespace Repositories
 {
     public class CourseRepository(DBContext dbContext) : ICourseRepository
     {
@@ -29,7 +29,7 @@ namespace EduzcaServer.Repositories
         #endregion
 
         #region FIND
-        public async Task<List<CourseEntity>> FindAll() => await _dbContext.Courses.Include(user=> user.Owner).ToListAsync();
+        public async Task<List<CourseEntity>> FindAll() => await _dbContext.Courses.Include(user => user.Owner).ToListAsync();
 
         public async Task<CourseEntity> FindOne(int id)
         {

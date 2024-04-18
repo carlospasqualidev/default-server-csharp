@@ -1,7 +1,7 @@
-﻿using EduzcaServer.Models;
-using Microsoft.AspNetCore.Mvc;
-using EduzcaServer.Services.Course;
-using EduzcaServer.Services.Course.DTO;
+﻿using Microsoft.AspNetCore.Mvc;
+using Entities;
+using Services.Course;
+using Services.Course.DTO;
 
 
 namespace EduzcaServer.Controllers

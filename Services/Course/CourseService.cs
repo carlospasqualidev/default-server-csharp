@@ -1,10 +1,10 @@
-﻿using EduzcaServer.Models;
-using EduzcaServer.Repositories;
-using EduzcaServer.Services.Course.DTO;
+﻿using Entities;
+using Repositories;
+using Services.Course.DTO;
 
-namespace EduzcaServer.Services.Course
+namespace Services.Course
 {
-    public class CourseService(ICourseRepository courseRepository, IUserRepository userRepository): ICourseService
+    public class CourseService(ICourseRepository courseRepository, IUserRepository userRepository) : ICourseService
     {
         private readonly ICourseRepository _courseRepository = courseRepository;
         private readonly IUserRepository _userRepository = userRepository;
@@ -16,13 +16,13 @@ namespace EduzcaServer.Services.Course
 
             CourseEntity courseData = new()
             {
-               Name = course.Name,
-               TumbnailUrl = course.TumbnailUrl,
-               OwnerId = course.OwnerId,
-               Description = course.Description,
+                Name = course.Name,
+                TumbnailUrl = course.TumbnailUrl,
+                OwnerId = course.OwnerId,
+                Description = course.Description,
             };
 
-             await _courseRepository.Create(courseData);
+            await _courseRepository.Create(courseData);
 
             return courseData;
         }
@@ -47,7 +47,7 @@ namespace EduzcaServer.Services.Course
         #region FIND
         public async Task<List<CourseEntity>> FindAll()
         {
-            List<CourseEntity> courses = await _courseRepository.FindAll() ;
+            List<CourseEntity> courses = await _courseRepository.FindAll();
 
             return courses;
         }

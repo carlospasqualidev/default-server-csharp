@@ -1,11 +1,11 @@
 ﻿using EduzcaServer.Data;
-using EduzcaServer.Models;
+using Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 
-namespace EduzcaServer.Repositories
+namespace Repositories
 {
-   
+
     public class UserRepository(DBContext dbContext) : IUserRepository
     {
         private readonly DBContext _dbContext = dbContext;
@@ -21,7 +21,7 @@ namespace EduzcaServer.Repositories
             return user;
         }
         #endregion
-       
+
         #region UPDATE
         public async Task<UserEntity> Update(UserEntity user)
         {
@@ -39,7 +39,7 @@ namespace EduzcaServer.Repositories
 
         public async Task<UserEntity> FindOne(int id)
         {
-           // UserEntity? dbUser = await _dbContext.Users.Include(course=> course.Courses).FirstOrDefaultAsync(user => user.Id == id);
+            // UserEntity? dbUser = await _dbContext.Users.Include(course=> course.Courses).FirstOrDefaultAsync(user => user.Id == id);
             UserEntity? dbUser = await _dbContext.Users.FirstOrDefaultAsync(user => user.Id == id);
 
             return dbUser ?? throw new Exception("Usuário não encontrado na base de dados.");

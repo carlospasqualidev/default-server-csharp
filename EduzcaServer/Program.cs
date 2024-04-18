@@ -1,11 +1,11 @@
 
 using EduzcaServer.Data;
-using EduzcaServer.Repositories;
-using EduzcaServer.Services.Auth;
-using EduzcaServer.Services.Class;
-using EduzcaServer.Services.Course;
-using EduzcaServer.Services.User;
 using Microsoft.EntityFrameworkCore;
+using Repositories;
+using Services.Auth;
+using Services.Class;
+using Services.Course;
+using Services.User;
 using System.Text.Json.Serialization;
 
 namespace EduzcaServer

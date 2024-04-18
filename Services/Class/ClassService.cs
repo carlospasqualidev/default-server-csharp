@@ -1,11 +1,11 @@
-﻿using EduzcaServer.Entities;
-using EduzcaServer.Repositories;
-using EduzcaServer.Services.Class.DTO;
+﻿using Entities;
+using Repositories;
+using Services.Class.DTO;
 
 
-namespace EduzcaServer.Services.Class
+namespace Services.Class
 {
-    public class ClassService(IClassRepository classRepository, ICourseRepository courseRepository): IClassService
+    public class ClassService(IClassRepository classRepository, ICourseRepository courseRepository) : IClassService
     {
         private readonly IClassRepository _classRepository = classRepository;
         private readonly IClassRepository _courseRepository = classRepository;

@@ -1,7 +1,7 @@
-﻿using EduzcaServer.Models;
-using EduzcaServer.Services.Auth;
-using EduzcaServer.Services.Auth.DTO;
+﻿using Entities;
 using Microsoft.AspNetCore.Mvc;
+using Services.Auth;
+using Services.Auth.DTO;
 
 namespace EduzcaServer.Controllers
 {
@@ -46,6 +46,5 @@ namespace EduzcaServer.Controllers
             }
         }
         #endregion
-
     }
 }

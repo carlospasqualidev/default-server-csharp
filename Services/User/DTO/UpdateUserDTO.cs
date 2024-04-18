@@ -1,4 +1,4 @@
-﻿namespace EduzcaServer.Services.User.DTO
+﻿namespace Services.User.DTO
 {
     public class UpdateUserDTO
     {

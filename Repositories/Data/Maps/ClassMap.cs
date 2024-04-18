@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using EduzcaServer.Entities;
+using Entities;
 
 namespace EduzcaServer.Data.Maps
 {

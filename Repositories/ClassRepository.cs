@@ -1,8 +1,8 @@
 ﻿using EduzcaServer.Data;
-using EduzcaServer.Entities;
+using Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace EduzcaServer.Repositories
+namespace Repositories
 {
     public class ClassRepository(DBContext dbContext) : IClassRepository
     {
@@ -11,11 +11,11 @@ namespace EduzcaServer.Repositories
         #region CREATE
         public async Task<ClassEntity> Create(ClassEntity classData)
         {
-  
+
             await _dbContext.Classes.AddAsync(classData);
             await _dbContext.SaveChangesAsync();
 
-             return classData;
+            return classData;
         }
         #endregion
 

@@ -1,7 +1,7 @@
-﻿using EduzcaServer.Models;
-using EduzcaServer.Services.User.DTO;
-using EduzcaServer.Services.User;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Entities;
+using Services.User;
+using Services.User.DTO;
 
 namespace EduzcaServer.Controllers
 {

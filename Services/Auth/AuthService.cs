@@ -1,13 +1,13 @@
-﻿using EduzcaServer.Models;
-using EduzcaServer.Repositories;
-using EduzcaServer.Services.Auth.DTO;
+﻿using Entities;
+using Repositories;
+using Services.Auth.DTO;
 
-namespace EduzcaServer.Services.Auth
+namespace Services.Auth
 {
     public class AuthService(IUserRepository userRepository) : IAuthService
     {
         private readonly IUserRepository _userRepository = userRepository;
-        
+
         public async Task<UserEntity> Login(LoginDTO data)
         {
             UserEntity user = await _userRepository.FindToLogin(data.Email, data.Password);
