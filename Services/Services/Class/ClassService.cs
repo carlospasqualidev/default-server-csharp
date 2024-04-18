@@ -1,19 +1,19 @@
 ﻿using EduzcaServer.Entities;
 using EduzcaServer.Repositories;
+using EduzcaServer.Services.Class.DTO;
 
 
 namespace EduzcaServer.Services.Class
 {
-    public class ClassService(IClassRepository classRepository): IClassService
+    public class ClassService(IClassRepository classRepository, ICourseRepository courseRepository): IClassService
     {
         private readonly IClassRepository _classRepository = classRepository;
+        private readonly IClassRepository _courseRepository = classRepository;
 
         #region CREATE
-        public async Task<ClassEntity> Create(ClassEntity classData)
+        public async Task<ClassEntity> Create(CreateClassDTO classData)
         {
-            await _classRepository.FindOne(classData.Id);
-
-            //find last class of the course for increment order
+            await _courseRepository.FindOne(classData.CourseId);
 
             ClassEntity ClassToCreate = new()
             {
@@ -27,14 +27,15 @@ namespace EduzcaServer.Services.Class
 
             await _classRepository.Create(ClassToCreate);
 
-            return classData;
+            return ClassToCreate;
         }
         #endregion
 
         #region UPDATE
-        public async Task<ClassEntity> Update(ClassEntity classData)
+        public async Task<ClassEntity> Update(UpdateClassDTO classData)
         {
             ClassEntity classDataToUpdate = await _classRepository.FindOne(classData.Id);
+            await _courseRepository.FindOne(classData.CourseId);
 
             classDataToUpdate.Description = classData.Description;
             classDataToUpdate.Name = classData.Name;
@@ -42,9 +43,9 @@ namespace EduzcaServer.Services.Class
             classDataToUpdate.VideoUrl = classData.VideoUrl;
             classDataToUpdate.Text = classData.Text;
 
-            await _classRepository.Update(classData);
+            await _classRepository.Update(classDataToUpdate);
 
-            return classData;
+            return classDataToUpdate;
         }
         #endregion
 
@@ -69,8 +70,8 @@ namespace EduzcaServer.Services.Class
     #region INTERFACE
     public interface IClassService
     {
-        public Task<ClassEntity> Create(ClassEntity classData);
-        public Task<ClassEntity> Update(ClassEntity classData);
+        public Task<ClassEntity> Create(CreateClassDTO classData);
+        public Task<ClassEntity> Update(UpdateClassDTO classData);
         public Task<ClassEntity> FindOne(int id);
         public Task Delete(int id);
     }

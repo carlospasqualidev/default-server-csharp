@@ -16,9 +16,16 @@ namespace EduzcaServer.Controllers
         [HttpPost("Login")]
         public async Task<ActionResult<UserEntity>> Login(LoginDTO data)
         {
-            UserEntity user = await _authService.Login(data);
+            try
+            {
+                UserEntity user = await _authService.Login(data);
 
-            return Ok(user);
+                return Ok(user);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
         #endregion
 
@@ -27,9 +34,16 @@ namespace EduzcaServer.Controllers
         [HttpPost("Register")]
         public async Task<ActionResult<UserEntity>> Register(RegisterDTO data)
         {
-            UserEntity user = await _authService.Register(data);
+            try
+            {
+                UserEntity user = await _authService.Register(data);
 
-            return Ok(user);
+                return Ok(user);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
         #endregion
 

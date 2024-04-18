@@ -16,9 +16,16 @@ namespace EduzcaServer.Controllers
         [HttpPost]
         public async Task<ActionResult<CourseEntity>> Create(CreateCourseDTO course)
         {
-          CourseEntity courseData = await _courseService.Create(course);
-            
-          return Ok(courseData);
+            try
+            {
+                CourseEntity courseData = await _courseService.Create(course);
+
+                return Ok(courseData);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
         #endregion
 
@@ -26,9 +33,16 @@ namespace EduzcaServer.Controllers
         [HttpPut]
         public async Task<ActionResult<CourseEntity>> Update(UpdateCourseDTO course)
         {
-            await _courseService.Update(course);
+            try
+            {
+                await _courseService.Update(course);
 
-            return Ok(course);
+                return Ok(course);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
         #endregion
 
@@ -36,17 +50,31 @@ namespace EduzcaServer.Controllers
         [HttpGet]
         public async Task<ActionResult<List<CourseEntity>>> FindAll()
         {
-            List<CourseEntity> courses = await _courseService.FindAll();
+            try
+            {
+                List<CourseEntity> courses = await _courseService.FindAll();
 
-            return Ok(courses);
+                return Ok(courses);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<List<CourseEntity>>> FindOne(int id)
         {
-            CourseEntity course = await _courseService.FindOne(id);
+            try
+            {
+                CourseEntity course = await _courseService.FindOne(id);
 
-            return Ok(course);
+                return Ok(course);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
         #endregion
 
@@ -54,9 +82,16 @@ namespace EduzcaServer.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<List<CourseEntity>>> Delete(int id)
         {
-             await _courseService.Delete(id);
+            try
+            {
+                await _courseService.Delete(id);
 
-            return Ok();
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
         #endregion
     }

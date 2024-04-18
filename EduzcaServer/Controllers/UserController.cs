@@ -15,9 +15,16 @@ namespace EduzcaServer.Controllers
         [HttpPut]
         public async Task<ActionResult<UserEntity>> Update(UpdateUserDTO user)
         {
-            await _userService.Update(user);
+            try
+            {
+                await _userService.Update(user);
 
-            return Ok(user);
+                return Ok(user);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
         #endregion
 
@@ -25,17 +32,32 @@ namespace EduzcaServer.Controllers
         [HttpGet]
         public async Task<ActionResult<List<UserEntity>>> FindAll()
         {
-            List<UserEntity> users = await _userService.FindAll();
+            try
+            {
+                List<UserEntity> users = await _userService.FindAll();
 
-            return Ok(users);
+                return Ok(users);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<List<UserEntity>>> FindOne(int id)
         {
-            UserEntity user = await _userService.FindOne(id);
+            try
+            {
+                UserEntity user = await _userService.FindOne(id);
 
-            return Ok(user);
+                return Ok(user);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            
         }
         #endregion
 
@@ -43,9 +65,16 @@ namespace EduzcaServer.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<List<UserEntity>>> Delete(int id)
         {
-             await _userService.Delete(id);
+            try
+            {
+                await _userService.Delete(id);
 
-            return Ok();
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }  
         }
         #endregion
     }
