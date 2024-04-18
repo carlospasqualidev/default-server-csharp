@@ -1,9 +1,6 @@
 ﻿using EduzcaServer.Data;
 using EduzcaServer.Models;
-using EduzcaServer.Services.Auth.DTO;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
-using System.Drawing.Printing;
 using System.Text.RegularExpressions;
 
 namespace EduzcaServer.Repositories
@@ -55,11 +52,11 @@ namespace EduzcaServer.Repositories
             return dbUser ?? throw new Exception("Usuário não encontrado na base de dados.");
         }
 
-        public async Task<UserEntity> FindToLogin(LoginDTO data)
+        public async Task<UserEntity> FindToLogin(string email, string password)
         {
-            UserEntity? dbUser = await _dbContext.Users.FirstOrDefaultAsync(user => user.Email == data.Email);
+            UserEntity? dbUser = await _dbContext.Users.FirstOrDefaultAsync(user => user.Email == email);
 
-            if (dbUser == null || !BCrypt.Net.BCrypt.Verify(data.Password, dbUser.Password))
+            if (dbUser == null || !BCrypt.Net.BCrypt.Verify(password, dbUser.Password))
                 throw new Exception("Credenciais de acesso inválidas.");
 
             return dbUser;
@@ -111,7 +108,7 @@ namespace EduzcaServer.Repositories
         public Task<List<UserEntity>> FindAll();
         public Task<UserEntity> FindOne(int id);
         public Task<UserEntity> FindOneByEmail(string email);
-        public Task<UserEntity> FindToLogin(LoginDTO data);
+        public Task<UserEntity> FindToLogin(string email, string password);
         public Task<UserEntity> Create(UserEntity user);
         public Task<UserEntity> Update(UserEntity user);
         public Task Delete(int id);

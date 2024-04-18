@@ -9,7 +9,7 @@ namespace EduzcaServer.DataContext.Maps
         public void Configure(EntityTypeBuilder<CourseEntity> builder)
         {
             builder.HasKey(course => course.Id);
-            
+            builder.Property(course => course.OwnerId);
             builder.Property(course => course.Name).IsRequired();
             builder.Property(course => course.TumbnailUrl);
             builder.Property(course => course.Description);

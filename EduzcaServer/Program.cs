@@ -1,13 +1,12 @@
 
 using EduzcaServer.Data;
-using Microsoft.EntityFrameworkCore;
 using EduzcaServer.Repositories;
-using EduzcaServer.Services.User;
-using EduzcaServer.Services.Course;
 using EduzcaServer.Services.Auth;
+using EduzcaServer.Services.Class;
+using EduzcaServer.Services.Course;
+using EduzcaServer.Services.User;
+using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
-
-
 
 namespace EduzcaServer
 {
@@ -31,8 +30,10 @@ namespace EduzcaServer
 
             #region DATABASE CONNECTION
             builder.Services.AddEntityFrameworkNpgsql().AddDbContext<DBContext>(
-                options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
+                options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Controllers"))
             );
+
+
             #endregion
 
             #region INJECTION DEPENDENCY
@@ -50,10 +51,13 @@ namespace EduzcaServer
             builder.Services.AddScoped<ICourseRepository, CourseRepository>();
             builder.Services.AddScoped<ICourseService, CourseService>();
             #endregion
-           
+
+            #region CLASS
+            builder.Services.AddScoped<IClassRepository, ClassRepository>();
+            builder.Services.AddScoped<IClassService, ClassService>();
             #endregion
 
-
+            #endregion
 
             var app = builder.Build();
 

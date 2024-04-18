@@ -10,7 +10,7 @@ namespace EduzcaServer.Services.Auth
         
         public async Task<UserEntity> Login(LoginDTO data)
         {
-            UserEntity user = await _userRepository.FindToLogin(data);
+            UserEntity user = await _userRepository.FindToLogin(data.Email, data.Password);
 
             return user;
         }
