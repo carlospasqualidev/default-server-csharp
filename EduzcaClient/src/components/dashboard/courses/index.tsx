@@ -11,31 +11,34 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import CoursesDropdown from "../courses-dropdown";
 
-const Courses: React.FC = () => {
+import { Course } from "@/core/domain/entities/courses";
+
+interface CoursesProps {
+  course: Course;
+}
+
+const Courses: React.FC<CoursesProps> = ({ course }) => {
   return (
-    <section className="flex flex-col gap-6">
-      <span className="text-2xl font-semibold">Meus Cursos</span>
-
-      <div className="grid grid-cols-4 gap-4">
-        <Card>
-          <CardHeader>
-            <Image
-              src="/logo.png"
-              width={80}
-              height={80}
-              loading="lazy"
-              alt="Logo"
-            />
-            <CardTitle>Nome do curso</CardTitle>
-            <CardDescription>Card Description</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Button className="w-full">Ver curso</Button>
-          </CardContent>
-        </Card>
-      </div>
-    </section>
+    <Card>
+      <CardHeader>
+        <Image
+          src="/logo.png"
+          width={80}
+          height={80}
+          loading="lazy"
+          alt="Logo"
+        />
+        <CardTitle className="flex justify-between">
+          {course.name} <CoursesDropdown courseId={course.id} />
+        </CardTitle>
+        <CardDescription>{course.description}</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <Button className="w-full">Ver curso</Button>
+      </CardContent>
+    </Card>
   );
 };
 

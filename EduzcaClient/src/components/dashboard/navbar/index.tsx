@@ -13,10 +13,10 @@ import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu";
 
 const Navbar: React.FC = () => {
   return (
-    <NavigationMenu className="mb-8">
+    <NavigationMenu className="mb-8 px-10">
       <NavigationMenuList>
         <NavigationMenuItem className="cursor-pointer">
-          <Link href="/" legacyBehavior passHref>
+          <Link href="/dashboard" legacyBehavior passHref>
             <Image
               src="/logo.png"
               width={80}
