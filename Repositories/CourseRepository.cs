@@ -33,7 +33,7 @@ namespace Repositories
 
         public async Task<CourseEntity> FindOne(int id)
         {
-            CourseEntity? course = await _dbContext.Courses.FirstOrDefaultAsync(course => course.Id == id);
+            CourseEntity? course = await _dbContext.Courses.Include((course) => course.Owner).Include((course) => course.Feedbacks).FirstOrDefaultAsync(course => course.Id == id);
 
             return course ?? throw new Exception("Curso não encontrado na base de dados.");
         }

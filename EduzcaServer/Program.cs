@@ -49,7 +49,10 @@ namespace EduzcaServer
 
             #region COURSE
             builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+            builder.Services.AddScoped<ICourseFeedbackRepository, CourseFeedbackRepository>();
+
             builder.Services.AddScoped<ICourseService, CourseService>();
+            builder.Services.AddScoped<ICourseFeedbackService, CourseFeedbackService>();
             #endregion
 
             #region CLASS

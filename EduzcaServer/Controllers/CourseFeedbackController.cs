@@ -1,25 +1,25 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Services.Course;
 using Entities;
-using Services.Class;
-using Services.Class.DTO;
+using Services.Course.DTO;
 
 namespace Controllers.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClassController(IClassService classService) : ControllerBase
+    public class CourseFeedbackController(ICourseFeedbackService courseFeedbackService) : ControllerBase
     {
-        private readonly IClassService _classService = classService;
+        private readonly ICourseFeedbackService _courseFeedbackService = courseFeedbackService;
 
         #region CREATE
         [HttpPost]
-        public async Task<ActionResult<ClassEntity>> Create(CreateClassDTO classData)
+        public async Task<ActionResult<CourseFeedbackEntity>> Create(CreateCourseFeedbackDTO feedback)
         {
             try
             {
-                ClassEntity createdClass = await _classService.Create(classData);
+                CourseFeedbackEntity feedbacKData = await _courseFeedbackService.Create(feedback);
 
-                return Ok(createdClass);
+                return Ok(feedbacKData);
             }
             catch (Exception e)
             {
@@ -28,15 +28,16 @@ namespace Controllers.Controllers
         }
         #endregion
 
+
         #region UPDATE
         [HttpPut]
-        public async Task<ActionResult<CourseEntity>> Update(UpdateClassDTO classData)
+        public async Task<ActionResult<CourseFeedbackEntity>> Update(UpdateCourseFeedbackDTO feedback)
         {
             try
             {
-                ClassEntity UpdatedClass = await _classService.Update(classData);
+                CourseFeedbackEntity feedbacKData = await _courseFeedbackService.Update(feedback);
 
-                return Ok(UpdatedClass);
+                return Ok(feedbacKData);
             }
             catch (Exception e)
             {
@@ -46,15 +47,14 @@ namespace Controllers.Controllers
         #endregion
 
         #region FIND 
-
         [HttpGet("{id}")]
-        public async Task<ActionResult<ClassEntity>> FindOne(int id)
+        public async Task<ActionResult<List<CourseFeedbackEntity>>> FindOne(int id)
         {
             try
             {
-                ClassEntity classData = await _classService.FindOne(id);
+                CourseFeedbackEntity feedbackData = await _courseFeedbackService.FindOne(id);
 
-                return Ok(classData);
+                return Ok(feedbackData);
             }
             catch (Exception e)
             {
@@ -63,13 +63,14 @@ namespace Controllers.Controllers
         }
         #endregion
 
+
         #region DELETE
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
             try
             {
-                await _classService.Delete(id);
+                await _courseFeedbackService.Delete(id);
 
                 return Ok();
             }

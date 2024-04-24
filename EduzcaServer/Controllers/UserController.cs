@@ -7,7 +7,7 @@ namespace EduzcaServer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController(IUserService userService) : ControllerBase
+    public class UserController(IUserService userService) : ControllerBase
     {
         private readonly IUserService _userService = userService;
 
@@ -17,9 +17,9 @@ namespace EduzcaServer.Controllers
         {
             try
             {
-                await _userService.Update(user);
+              UserEntity userData =  await _userService.Update(user);
 
-                return Ok(user);
+                return Ok(userData);
             }
             catch (Exception e)
             {
@@ -63,7 +63,7 @@ namespace EduzcaServer.Controllers
 
         #region DELETE
         [HttpDelete("{id}")]
-        public async Task<ActionResult<List<UserEntity>>> Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             try
             {

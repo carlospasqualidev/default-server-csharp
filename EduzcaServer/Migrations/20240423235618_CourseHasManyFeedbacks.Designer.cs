@@ -3,6 +3,7 @@ using System;
 using EduzcaServer.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Controllers.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20240423235618_CourseHasManyFeedbacks")]
+    partial class CourseHasManyFeedbacks
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,9 +78,6 @@ namespace Controllers.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
-                    b.Property<float>("GradeAvg")
-                        .HasColumnType("real");
-
                     b.Property<bool>("IsPublished")
                         .HasColumnType("boolean");
 
@@ -86,9 +86,6 @@ namespace Controllers.Migrations
                         .HasColumnType("text");
 
                     b.Property<int>("OwnerId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("TotalFeedbacks")
                         .HasColumnType("integer");
 
                     b.Property<string>("TumbnailUrl")

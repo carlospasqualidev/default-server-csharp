@@ -16,10 +16,14 @@ namespace EduzcaServer.DataContext.Maps
             builder.Property(course => course.IsPublished).IsRequired();
             builder.Property(course => course.UpdatedAt).IsRequired();
             builder.Property(course => course.CreatedAt).IsRequired();
+            builder.Property(course => course.GradeAvg);
+            builder.Property(course => course.TotalFeedbacks);
             builder.HasOne(course => course.Owner)
-            //.WithMany(owner => owner.Courses)
             .WithMany()
             .HasForeignKey(course => course.OwnerId);
+            builder.HasMany(course => course.Feedbacks)
+            .WithOne()
+            .HasForeignKey(feedback => feedback.CourseId);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Services.Class
     public class ClassService(IClassRepository classRepository, ICourseRepository courseRepository) : IClassService
     {
         private readonly IClassRepository _classRepository = classRepository;
-        private readonly IClassRepository _courseRepository = classRepository;
+        private readonly ICourseRepository _courseRepository = courseRepository;
 
         #region CREATE
         public async Task<ClassEntity> Create(CreateClassDTO classData)

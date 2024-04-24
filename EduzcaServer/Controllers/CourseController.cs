@@ -8,7 +8,7 @@ namespace EduzcaServer.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CoursesController(ICourseService courseService) : ControllerBase
+    public class CourseController(ICourseService courseService) : ControllerBase
     {
         private readonly ICourseService _courseService = courseService;
 
@@ -35,9 +35,9 @@ namespace EduzcaServer.Controllers
         {
             try
             {
-                await _courseService.Update(course);
+                CourseEntity courseData = await _courseService.Update(course);
 
-                return Ok(course);
+                return Ok(courseData);
             }
             catch (Exception e)
             {
@@ -80,7 +80,7 @@ namespace EduzcaServer.Controllers
 
         #region DELETE
         [HttpDelete("{id}")]
-        public async Task<ActionResult<List<CourseEntity>>> Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             try
             {
