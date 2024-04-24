@@ -1,3 +1,18 @@
+## Bem-vindo à Eduzca !
+
+A Eduzca é uma plataforma dedicada a disponibilizar cursos gratuitos para a comunidade. Nosso objetivo é fornecer acesso igualitário à educação, permitindo que todos contribuam e se beneficiem do aprendizado colaborativo. Na Eduzca, todos são bem-vindos, independentemente de sua origem, nível de habilidade ou recursos financeiros.
+
+Nossa missão é impulsionar o desenvolvimento pessoal e profissional de nossos usuários, promovendo um ambiente de aprendizado inclusivo e colaborativo. Acreditamos que o conhecimento é uma ferramenta poderosa para promover mudanças positivas em nossas vidas e comunidades.
+
+Na Eduzca, você não só pode acessar uma ampla variedade de cursos gratuitos, mas também pode contribuir para a plataforma compartilhando seu próprio conhecimento. Seja um especialista em sua área ou alguém apaixonado por um assunto específico, você pode criar e disponibilizar seus próprios cursos para beneficiar a comunidade como um todo.
+
+Além disso, incentivamos a interação entre os usuários através do sistema de feedback. Ao concluir um curso, você pode fornecer feedback valioso para o instrutor, ajudando a melhorar a qualidade do conteúdo e aprimorar a experiência de aprendizado para outros alunos.
+
+A gestão de cursos na Eduzca é simples e intuitiva. Os instrutores podem facilmente adicionar e organizar aulas, criar conteúdo envolvente e acompanhar o progresso dos alunos. Nossa plataforma foi projetada para ser acessível e fácil de usar, permitindo que tanto os criadores de cursos quanto os alunos se concentrem no que realmente importa: o aprendizado.
+
+Em resumo, a Eduzca não é apenas uma plataforma de cursos online; é uma comunidade vibrante e colaborativa dedicada ao aprendizado contínuo e ao crescimento pessoal. Junte-se a nós hoje e comece sua jornada de aprendizado em um ambiente acolhedor e inspirador.
+
+
 ## Requisitos Funcionais:
 
 1. **Autenticação e Autorização:**
