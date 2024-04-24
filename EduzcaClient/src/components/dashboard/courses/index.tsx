@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
+
 import CoursesDropdown from "../courses-dropdown";
 
 import { Course } from "@/core/domain/entities/courses";
@@ -23,13 +23,8 @@ const Courses: React.FC<CoursesProps> = ({ course }) => {
   return (
     <Card>
       <CardHeader>
-        <Image
-          src="/logo.png"
-          width={80}
-          height={80}
-          loading="lazy"
-          alt="Logo"
-        />
+        <img src={course.thumbnailUrl} className="w-full rounded-md mb-4" />
+
         <CardTitle className="flex justify-between">
           {course.name} <CoursesDropdown courseId={course.id} />
         </CardTitle>

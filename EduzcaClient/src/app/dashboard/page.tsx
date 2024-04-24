@@ -7,13 +7,17 @@ const courses: Course[] = [
     id: 1,
     name: "Curso de Next.js",
     description: "Curso focado em frontend",
-    thumbnailUrl: "",
+    ownerId: 1,
+    thumbnailUrl:
+      "https://cdn.openwebinars.net/media/fbads-react-principiantes2.png",
   },
   {
     id: 2,
     name: "Nest.js",
     description: "Curso focado em backend",
-    thumbnailUrl: "",
+    ownerId: 1,
+    thumbnailUrl:
+      "https://assets-global.website-files.com/6092ed75cac3156e208ac5e9/64a76ee038423d0aebf23ad3_nest-thumb.webp",
   },
 ];
 
