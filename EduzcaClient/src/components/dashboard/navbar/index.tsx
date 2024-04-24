@@ -33,6 +33,11 @@ const Navbar: React.FC = () => {
               Gerenciar cursos
             </NavigationMenuLink>
           </Link>
+          <Link href="/" legacyBehavior passHref>
+            <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+              Sair
+            </NavigationMenuLink>
+          </Link>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

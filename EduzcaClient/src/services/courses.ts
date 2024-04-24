@@ -10,6 +10,6 @@ export const getCourses = async () => {
   return api.get(`/Courses`);
 };
 
-export const postCourse = async (data: Course) => {
+export const createCourse = async (data: Course) => {
   return api.post("/Courses", data);
 };

@@ -16,6 +16,7 @@ interface CoursesDropdownProps {
 const CoursesDropdown: React.FC<CoursesDropdownProps> = ({ courseId }) => {
   const router = useRouter();
   const courseURL = `/dashboard/course/${courseId}`;
+  const classURL = `/dashboard/class/${courseId}`;
 
   return (
     <DropdownMenu>
@@ -26,6 +27,12 @@ const CoursesDropdown: React.FC<CoursesDropdownProps> = ({ courseId }) => {
           onClick={() => router.push(courseURL)}
         >
           Editar
+        </DropdownMenuLabel>
+        <DropdownMenuLabel
+          className="cursor-pointer outline-none"
+          onClick={() => router.push(classURL)}
+        >
+          Criar aula
         </DropdownMenuLabel>
       </DropdownMenuContent>
     </DropdownMenu>
