@@ -62,6 +62,15 @@ namespace Services.Course
             feedbackData.Grade = feedback.Grade;
             feedbackData.Commentary = feedback.Commentary;
 
+
+            #region UPDATE COURSE GRADE
+            CourseEntity course = await _courseRepository.FindOne(feedbackData.CourseId);
+            
+            float gradeAvg = (course.GradeAvg * course.TotalFeedbacks + feedback.Grade) / (course.TotalFeedbacks);
+
+            course.GradeAvg = gradeAvg;
+            #endregion
+
             await _courseFeedbackRepository.Update(feedbackData);
 
             return feedbackData;
