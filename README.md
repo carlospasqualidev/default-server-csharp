@@ -1,4 +1,4 @@
-## Bem-vindo à Eduzca !
+# Bem-vindo à Eduzca !
 
 A Eduzca é uma plataforma dedicada a disponibilizar cursos gratuitos para a comunidade. Nosso objetivo é fornecer acesso igualitário à educação, permitindo que todos contribuam e se beneficiem do aprendizado colaborativo. Na Eduzca, todos são bem-vindos, independentemente de sua origem, nível de habilidade ou recursos financeiros.
 
@@ -12,8 +12,24 @@ A gestão de cursos na Eduzca é simples e intuitiva. Os instrutores podem facil
 
 Em resumo, a Eduzca não é apenas uma plataforma de cursos online; é uma comunidade vibrante e colaborativa dedicada ao aprendizado contínuo e ao crescimento pessoal. Junte-se a nós hoje e comece sua jornada de aprendizado em um ambiente acolhedor e inspirador.
 
+# Ferramentas Utilizadas
 
-## Requisitos Funcionais:
+**Tecnologias Principais:**
+- **.NET Core 3.1:** O framework principal utilizado para o desenvolvimento da plataforma.
+- **Entity Framework Core:** Utilizado para mapeamento objeto-relacional (ORM) e acesso a dados.
+- **Entity Framework Core Design e Tools:** Ferramentas usadas para criação e migração de banco de dados.
+- **PostgreSQL:** Banco de dados relacional utilizado para armazenar os dados da aplicação.
+- **BCrypt:** Utilizado para a criptografia segura das senhas dos usuários.
+
+**Arquitetura em Camadas:**
+A aplicação segue uma arquitetura em camadas, o que promove uma separação clara de responsabilidades e facilita a manutenção e escalabilidade do código.
+- **Camada de Controller:** Responsável pela interação com as requisições HTTP e pela comunicação com as outras camadas.
+- **Camada de Service:** Contém a lógica de negócios da aplicação, incluindo regras de negócios e processamento de dados.
+- **Camada de Repositories:** Responsável pelo acesso aos dados, realizando operações de leitura e escrita no banco de dados.
+- **Camada de Entities:** Define as entidades de domínio da aplicação, que representam os objetos do mundo real e suas relações.
+- **Camada de DTOs (Data Transfer Objects):** Utilizada para transferir dados entre as camadas da aplicação, garantindo a segurança e a eficiência das operações.
+
+# Requisitos Funcionais:
 
 1. **Autenticação e Autorização:**
    - Os usuários devem ser capazes de se registrar e fazer login na plataforma.
@@ -41,7 +57,7 @@ Em resumo, a Eduzca não é apenas uma plataforma de cursos online; é uma comun
    - O feedback deve incluir uma nota e, opcionalmente, um comentário.
    - O feedback do curso deve ser refletido na média de nota do curso.
 
-## Requisitos Não Funcionais:
+# Requisitos Não Funcionais:
 
 1. **Segurança:**
    - Os dados do usuário devem ser armazenados de forma segura.
