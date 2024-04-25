@@ -57,6 +57,11 @@ namespace Services.Course
         #region UPDATE
         public async Task<CourseFeedbackEntity> Update(UpdateCourseFeedbackDTO feedback)
         {
+            #region VALIDATIONS
+            if (feedback.Grade < 0 || feedback.Grade > 5)
+                throw new Exception("A Nota deve estar entre 0 e 5.");
+            #endregion
+
             CourseFeedbackEntity feedbackData = await _courseFeedbackRepository.FindOne(feedback.Id);
 
             feedbackData.Grade = feedback.Grade;
@@ -71,13 +76,13 @@ namespace Services.Course
             course.GradeAvg = gradeAvg;
             #endregion
 
+            await _courseRepository.Update(course);
             await _courseFeedbackRepository.Update(feedbackData);
+
 
             return feedbackData;
         }
         #endregion
-
-
 
         #region FIND
         public async Task<CourseFeedbackEntity> FindOne(int id)
@@ -92,11 +97,22 @@ namespace Services.Course
         #region DELETE
         public async Task Delete(int id)
         {
+
+            CourseFeedbackEntity feedback = await _courseFeedbackRepository.FindOne(id);
+            CourseEntity course = await _courseRepository.FindOne(feedback.CourseId);
+
+            #region UPDATE COURSE GRADE
+            int newTotalFeedbacks = course.TotalFeedbacks - 1;
+            float gradeAvg = (course.GradeAvg * course.TotalFeedbacks - feedback.Grade) / (newTotalFeedbacks);
+
+            course.TotalFeedbacks = newTotalFeedbacks;
+            course.GradeAvg = gradeAvg;
+            #endregion
+
+            await _courseRepository.Update(course);
             await _courseFeedbackRepository.Delete(id);
         }
         #endregion
-
-
     }
     #region INTERFACE
     public interface ICourseFeedbackService

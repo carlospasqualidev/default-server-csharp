@@ -62,6 +62,10 @@ namespace EduzcaServer
 
             #endregion
 
+
+        
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -70,6 +74,8 @@ namespace EduzcaServer
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+      
 
             app.UseHttpsRedirection();
 
